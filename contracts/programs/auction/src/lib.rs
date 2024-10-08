@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::clock::Clock;
 
-declare_id!("11111111111111111111111111111111");
+declare_id!("AHNWL5VapxmWCdgm3Z46VmhwczjunV3Qico2a2hoLRdC");
 
 #[program]
 pub mod dutch_auction {
@@ -127,4 +127,6 @@ pub enum ErrorCode {
     AuctionStillActive,
     #[msg("The reserve price has not been met")]
     ReservePriceNotMet,
+    #[msg("The auction has already been ended")]
+    AuctionAlreadyEnded
 }

@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("11111111111111111111111111111111");
+declare_id!("8UdsEm4zTw7RScPtuxsmRdLntSKJosvh9CkkveUgRxTu");
 
 #[program]
 pub mod product_purchase {
@@ -42,6 +42,7 @@ pub mod product_purchase {
 pub struct PurchaseProduct<'info> {
     #[account(mut)]
     pub buyer: Signer<'info>,
+    /// CHECK: This is safe because we are only transferring funds to the seller
     #[account(mut)]
     pub seller: AccountInfo<'info>,
     #[account(mut)]

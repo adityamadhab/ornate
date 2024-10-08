@@ -85,8 +85,8 @@ function PlaceBidButton() {
     const { id } = useParams();
     console.log('Id: ', id)
     console.log('Placing Bid')
-    const PROGRAM_ID = new PublicKey("5XG9TZqbFnnQa9geu7H4JfKkPP4z4Gv5trBfAaosjiEN");
-
+    const PROGRAM_ID = new PublicKey("AHNWL5VapxmWCdgm3Z46VmhwczjunV3Qico2a2hoLRdC");
+    console.log('Program Id: ', PROGRAM_ID)
     const getProvider = () => {
         const connection = new Connection("https://api.devnet.solana.com");
         const provider = new AnchorProvider(connection, wallet, AnchorProvider.defaultOptions());
@@ -104,7 +104,9 @@ function PlaceBidButton() {
     
         try {
             const provider = getProvider();
+            console.log('Provider: ', provider)
             const program = new Program(idl, PROGRAM_ID, provider);
+            console.log('Program: ', program)
     
             console.log('Before find prog async')
             const [auctionPDA] = PublicKey.findProgramAddressSync(

@@ -1,150 +1,198 @@
 {
-    "version": "0.1.0",
+  "address": "AHNWL5VapxmWCdgm3Z46VmhwczjunV3Qico2a2hoLRdC",
+  "metadata": {
     "name": "dutch_auction",
-    "instructions": [
-      {
-        "name": "createAuction",
-        "accounts": [
-          {
-            "name": "auction",
-            "isMut": true,
-            "isSigner": false
-          },
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Auction Contract"
+  },
+  "instructions": [
+    {
+      "name": "create_auction",
+      "discriminator": [
+        234,
+        6,
+        201,
+        246,
+        47,
+        219,
+        176,
+        107
+      ],
+      "accounts": [
+        {
+          "name": "auction",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "seller",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "start_price",
+          "type": "u64"
+        },
+        {
+          "name": "reserve_price",
+          "type": "u64"
+        },
+        {
+          "name": "duration",
+          "type": "i64"
+        },
+        {
+          "name": "decrement",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "end_auction",
+      "discriminator": [
+        252,
+        110,
+        101,
+        234,
+        66,
+        104,
+        28,
+        87
+      ],
+      "accounts": [
+        {
+          "name": "auction",
+          "writable": true
+        },
+        {
+          "name": "seller",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "place_bid",
+      "discriminator": [
+        238,
+        77,
+        148,
+        91,
+        200,
+        151,
+        92,
+        146
+      ],
+      "accounts": [
+        {
+          "name": "auction",
+          "writable": true
+        },
+        {
+          "name": "bidder",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "seller",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Auction",
+      "discriminator": [
+        218,
+        94,
+        247,
+        242,
+        126,
+        233,
+        131,
+        81
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "AuctionEnded",
+      "msg": "The auction has already ended"
+    },
+    {
+      "code": 6001,
+      "name": "AuctionStillActive",
+      "msg": "The auction is still active"
+    },
+    {
+      "code": 6002,
+      "name": "ReservePriceNotMet",
+      "msg": "The reserve price has not been met"
+    },
+    {
+      "code": 6003,
+      "name": "AuctionAlreadyEnded",
+      "msg": "The auction has already been ended"
+    }
+  ],
+  "types": [
+    {
+      "name": "Auction",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
             "name": "seller",
-            "isMut": true,
-            "isSigner": true
+            "type": "pubkey"
           },
           {
-            "name": "systemProgram",
-            "isMut": false,
-            "isSigner": false
-          }
-        ],
-        "args": [
-          {
-            "name": "startPrice",
+            "name": "start_price",
             "type": "u64"
           },
           {
-            "name": "reservePrice",
+            "name": "current_price",
             "type": "u64"
           },
           {
-            "name": "duration",
+            "name": "reserve_price",
+            "type": "u64"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
             "type": "i64"
           },
           {
             "name": "decrement",
             "type": "u64"
+          },
+          {
+            "name": "winner",
+            "type": "pubkey"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
           }
         ]
-      },
-      {
-        "name": "placeBid",
-        "accounts": [
-          {
-            "name": "auction",
-            "isMut": true,
-            "isSigner": false
-          },
-          {
-            "name": "bidder",
-            "isMut": true,
-            "isSigner": true
-          },
-          {
-            "name": "seller",
-            "isMut": true,
-            "isSigner": false
-          },
-          {
-            "name": "systemProgram",
-            "isMut": false,
-            "isSigner": false
-          }
-        ],
-        "args": []
-      },
-      {
-        "name": "endAuction",
-        "accounts": [
-          {
-            "name": "auction",
-            "isMut": true,
-            "isSigner": false
-          },
-          {
-            "name": "seller",
-            "isMut": false,
-            "isSigner": true
-          }
-        ],
-        "args": []
       }
-    ],
-    "accounts": [
-      {
-        "name": "Auction",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            {
-              "name": "seller",
-              "type": "publicKey"
-            },
-            {
-              "name": "startPrice",
-              "type": "u64"
-            },
-            {
-              "name": "currentPrice",
-              "type": "u64"
-            },
-            {
-              "name": "reservePrice",
-              "type": "u64"
-            },
-            {
-              "name": "startTime",
-              "type": "i64"
-            },
-            {
-              "name": "endTime",
-              "type": "i64"
-            },
-            {
-              "name": "decrement",
-              "type": "u64"
-            },
-            {
-              "name": "winner",
-              "type": "publicKey"
-            },
-            {
-              "name": "isActive",
-              "type": "bool"
-            }
-          ]
-        }
-      }
-    ],
-    "errors": [
-      {
-        "code": 6000,
-        "name": "AuctionEnded",
-        "msg": "The auction has already ended"
-      },
-      {
-        "code": 6001,
-        "name": "AuctionStillActive",
-        "msg": "The auction is still active"
-      },
-      {
-        "code": 6002,
-        "name": "ReservePriceNotMet",
-        "msg": "The reserve price has not been met"
-      }
-    ]
-  }
-  
+    }
+  ]
+}

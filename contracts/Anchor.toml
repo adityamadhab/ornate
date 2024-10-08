@@ -5,13 +5,15 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
+auction = "AHNWL5VapxmWCdgm3Z46VmhwczjunV3Qico2a2hoLRdC"
 contracts = "DiepswP79yxGSaTEC4pF7iJfSKafh5CmmiRGzctjAmnx"
+products = "8UdsEm4zTw7RScPtuxsmRdLntSKJosvh9CkkveUgRxTu"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
