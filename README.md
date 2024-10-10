@@ -8,8 +8,7 @@ Welcome to **Ornate**, a decentralized marketplace where luxury fashion meets bl
 
 **Ornate** is a two-sided marketplace that bridges the gap between designers and consumers by leveraging blockchain technology. Designers can upload their fashion products, including exclusive luxury items for auction, while users can buy or bid using SOL or other cryptocurrencies. The platform uses a **Dutch Auction** model for live bidding and offers categories for all types of luxury and fashion accessories.
 
-![image](https://github.com/user-attachments/assets/35fb4799-b022-441b-bf97-ed80460390bc)  ![image](https://github.com/user-attachments/assets/a1ed1e80-132c-47b7-8589-623f283ecf57)
-
+![image](https://github.com/user-attachments/assets/35fb4799-b022-441b-bf97-ed80460390bc)  
 
 ---
 
